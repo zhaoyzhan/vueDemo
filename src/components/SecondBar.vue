@@ -6,7 +6,7 @@
 	    <li>房型<i class="iconfont icon-jiantouxia"></i></li>
 	    <li>更多<i class="iconfont icon-jiantouxia"></i></li>
 	  </ul>
-	  <div class="txt" v-for="item in dataList">
+	  <div class="txt" v-for="(item, index) in dataList" :key="index">
 			{{item}}	
 	  </div>
 	</div>

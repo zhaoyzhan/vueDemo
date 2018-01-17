@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-    <p class="link" @click="choseScroll" v-for="item in dataList">{{item}}</p>
-    <router-link to="childVue" @click.native="showScroll" v-for="item in dataList" class="active">{{item}}</router-link>
+    <p class="link" @click="choseScroll" v-for="(item, index) in dataList" :key="index">{{item}}</p>
+    <router-link to="childVue" @click.native="showScroll" v-for="(item, index) in dataList" class="active" :key="index">{{item}}</router-link>
     <router-link to="secondBar" class="active">点击哈哈</router-link>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
       localStorage.scroll = window.scrollY
     },
     choseScroll() {
-      window.scrollTop = 1000
+      // window.scrollTop = 1000
       console.log("22")
     }
   }
