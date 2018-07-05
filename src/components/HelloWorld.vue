@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <p class="link" @click="choseScroll" v-for="(item, index) in dataList" :key="index">{{item}}</p>
-    <router-link to="childVue" @click.native="showScroll" v-for="(item, index) in dataList" class="active" :key="index">{{item}}</router-link>
+    <router-link to="childVue" @click.native="showScroll" v-for="(item, index) in dataList" class="active" :key="Math.random()">{{item}}</router-link>
     <router-link to="secondBar" class="active">点击哈哈</router-link>
   </div>
 </template>

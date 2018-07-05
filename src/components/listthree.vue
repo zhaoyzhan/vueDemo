@@ -1,17 +1,17 @@
 <template>
-	<div class="con">
-		<router-link to="/">返回</router-link>
+	<div class="listthree list-container">
+		listthree
 	</div>
 </template>
 
 <script>
 	export default {
-		data () {
-			return {}
-		}
+
 	}
 </script>
 
 <style scoped>
-	
+	.listthree {
+		color: yellow;
+	}
 </style>
