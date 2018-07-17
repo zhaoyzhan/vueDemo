@@ -8,6 +8,7 @@
 	  name: 'app',
 	  methods: {
 	  	_login() {
+	  		sessionStorage.setItem('token', '123')
 	  		this.$router.push({path:'/home'})
 	  	}
 	  }

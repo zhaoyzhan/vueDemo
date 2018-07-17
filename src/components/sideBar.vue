@@ -4,7 +4,9 @@
 			<li v-for="(item, index) in sidebarList" :key="index">
 				<router-link :to="item.path">{{item.path}}</router-link>
 			</li>
-			<li @click="reback">返回</li>
+			<li>
+				<router-link to="/login">返回</router-link>
+			</li>
 		</ul>
 	</div>
 </template>
@@ -25,12 +27,9 @@
 			}
 		},
 		beforeMount() {
-			console.log('wwww');
+			// console.log('wwww');
 		},
 		methods: {
-			reback() {
-				this.$router.push({path:'/login'})
-			}
 		}
 	}
 </script>

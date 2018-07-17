@@ -14,6 +14,7 @@ import ListThree from '@/components/listthree'
 Vue.use(Router)
 
 const router = new Router({
+	mode: 'history',
 	routes: [{
 		path: '/login',
 		name: 'login',
@@ -21,37 +22,73 @@ const router = new Router({
 	}, {
 		path: '/',
 		redirect: '/home',
+		meta: {
+			requireAuth: true
+		},
 		beforeEnter(from, to, next) {
 			next()
 		}
 	}, {
 		path: '/home',
 		name: 'home',
+		meta: {
+			requireAuth: true
+		},
+		beforeEnter(from, to, next) {
+			next()
+		},
 		component: Home,
 		children: [{
 			path: '',
-			component: HelloWorld
+			// meta: {
+			// 	requireAuth: true
+			// },
+			component: HelloWorld,
 		}, {
 			path: '/childVue',
-			component: ChildVue
+			// meta: {
+			// 	requireAuth: true
+			// },
+			component: ChildVue,
+			meta: {
+				keepAlive: false
+			}
 		}, {
 			path: '/secondBar',
-			component: SecondBar
+			// meta: {
+			// 	requireAuth: true
+			// },
+			component: SecondBar,
+			meta: {
+				keepAlive: false
+			}
 		}, {
 			path: '/list',
 			component: List,
 			children: [{
 				path: '',
-				component: ListOne
+				component: ListOne,
+				meta: {
+					keepAlive: true
+				}
 			}, {
 				path: '/listone',
-				component: ListOne
+				component: ListOne,
+				meta: {
+					keepAlive: true
+				}
 			}, {
 				path: '/listtwo',
-				component: ListTwo
+				component: ListTwo,
+				meta: {
+					keepAlive: false
+				}
 			}, {
 				path: '/listthree',
-				component: ListThree
+				component: ListThree,
+				meta: {
+					keepAlive: false
+				}
 			}]
 		}]
 	}],
@@ -69,7 +106,7 @@ router.beforeEach((to, from, next) => {
 			next()
 		} else {
 			next({
-				path: "/"
+				path: "/login"
 			})
 		}
 	} else {

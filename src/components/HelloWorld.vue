@@ -28,8 +28,6 @@ export default {
     //   localStorage.setItem('scroll', scrollTop)
     // }
     showScroll() {
-      // console.log()
-      console.log(window.scrollY)
       localStorage.scroll = window.scrollY
     },
     choseScroll() {
