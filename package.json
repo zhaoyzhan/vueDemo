@@ -10,11 +10,13 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "amap-geohey-plugin": "0.0.5",
     "axios": "^0.18.0",
     "geohey-javascript-sdk": "^3.2.44",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "vue": "^2.5.2",
+    "vue-amap": "^0.5.8",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

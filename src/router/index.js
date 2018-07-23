@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/login'
-import Home from '@/components/home'
-import HelloWorld from '@/components/HelloWorld'
-import ChildVue from '@/components/ChildVue'
-import SecondBar from '@/components/SecondBar'
+// import Login from '@/components/login'
+// import Home from '@/components/home'
+// import HelloWorld from '@/components/HelloWorld'
+// import ChildVue from '@/components/ChildVue'
+// import SecondBar from '@/components/SecondBar'
 
-import List from '@/components/list'
-import ListOne from '@/components/listone'
-import ListTwo from '@/components/listtwo'
-import ListThree from '@/components/listthree'
+// import List from '@/components/list'
+// import ListOne from '@/components/listone'
+// import ListTwo from '@/components/listtwo'
+// import ListThree from '@/components/listthree'
+
+// let ListThree = require('../components/listthree')
 
 Vue.use(Router)
 
@@ -18,7 +20,7 @@ const router = new Router({
 	routes: [{
 		path: '/login',
 		name: 'login',
-		component: Login
+		component: resolve => require(['@/components/login'], resolve),
 	}, {
 		path: '/',
 		redirect: '/home',
@@ -37,19 +39,22 @@ const router = new Router({
 		beforeEnter(from, to, next) {
 			next()
 		},
-		component: Home,
+		// component: Home,
+		component: resolve => require(['@/components/home'], resolve),
 		children: [{
 			path: '',
 			// meta: {
 			// 	requireAuth: true
 			// },
-			component: HelloWorld,
+			component: resolve => require(['@/components/HelloWorld'], resolve),
+			// component: HelloWorld,
 		}, {
 			path: '/childVue',
 			// meta: {
 			// 	requireAuth: true
 			// },
-			component: ChildVue,
+			component: resolve => require(['@/components/ChildVue'], resolve),
+			// component: ChildVue,
 			meta: {
 				keepAlive: false
 			}
@@ -58,34 +63,40 @@ const router = new Router({
 			// meta: {
 			// 	requireAuth: true
 			// },
-			component: SecondBar,
+			// component: SecondBar,
+			component: resolve => require(['@/components/SecondBar'], resolve),
 			meta: {
 				keepAlive: false
 			}
 		}, {
 			path: '/list',
-			component: List,
+			// component: List,
+			component: resolve => require(['@/components/List'], resolve),
 			children: [{
 				path: '',
-				component: ListOne,
+				component: resolve => require(['@/components/listone'], resolve),
+				// component: ListOne,
 				meta: {
 					keepAlive: true
 				}
 			}, {
 				path: '/listone',
-				component: ListOne,
+				// component: ListOne,
+				component: resolve => require(['@/components/listone'], resolve),
 				meta: {
 					keepAlive: true
 				}
 			}, {
 				path: '/listtwo',
-				component: ListTwo,
+				// component: ListTwo,
+				component: resolve => require(['@/components/listtwo'], resolve),
 				meta: {
 					keepAlive: false
 				}
 			}, {
 				path: '/listthree',
-				component: ListThree,
+				// component: ListThree,
+				component: resolve => require(['@/components/listthree'], resolve),
 				meta: {
 					keepAlive: false
 				}

@@ -24,8 +24,10 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
+      'GAPI': '//dist.geohey.com/g-api.js/latest/g-api.min.js',
       '@': resolve('src'),
-    }
+    },
+
   },
   module: {
     rules: [{
@@ -73,5 +75,8 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
+  },
+  externals: {
+    'AMap': 'AMap'
   }
 }

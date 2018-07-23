@@ -35,6 +35,7 @@
 		mounted() {
 			let timer = setInterval(()=> {
 				if(G) {
+					// console.log(G.MapViz, '44');
 					this.map();
 					clearInterval(timer);
 				}
@@ -66,14 +67,36 @@
 						// topZIndex: 9999,
 						// allowPan: true,
 						initStatus: { //地图初始状态
-							center: [11391374.004640186, 1587886.9740710251],  //地图中心
+							center: [215830.02046008888, 99328.4805741838],  //地图中心
 							res: 4891.9698105, //分辨率
 							rotate: 0 //旋转角度
 						}
 					});
+
 					let tileLayer = new G.Layer.Tile('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 						cluster: ['a', 'b', 'c']
 					});
+
+					// G.loadModules( [ 'heat', 'maps', 'fluid', 'mapviz' ], function() {
+					//     G.MapViz.get( '4229f22d186a456781ba4873db04e14c', {
+					//         host: 'http://geohey.com',                          // 数据请求地址
+					//         ak: 'OTJlMGUxMGNkYTUzNGZhY2FlN2I2M2UzOGQ5ZWVhMTU',  // API Key
+					//         tileHost: 'http://{s}.geohey.com',                  // 瓦片请求地址
+					//         cluster: [ 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8' ] // 瓦片服务器集群
+					//     }, map )
+
+					// } );
+					// let graphicLayer = new G.Layer.Graphic(); 
+					// graphicLayer.addTo(map); 
+					// var g = new G.Graphic.Point([116.39, 39.9], null, { 
+					// 	shape: 'image', //图片类型的标识，也可以是text类型 
+					// 	size: [25, 40], //图片大小 
+					// 	offset: [-12, -40], //图片在X和Y方向上的偏移 
+					// 	image: 'images/pin{i}.png', //图片路径 
+					// 	clickable: true //可点击的标识 
+					// }); 
+					// g.addTo(graphicLayer); //将创建的点标识添加到图层里 
+
 					map.bind('click', this.mapClick);
 					map.bind('layerAdded', this._layerAdded);
 					// map.bind('mousemove', this._mousemove);
@@ -124,11 +147,14 @@
 				//绑定画图的方法
 				drawLayer.bind('drawStart', (e) => {
 					// console.log(e.type, e);
+					console.log(e, 'start');
 				}).bind('draw', (e) => {
 					// console.log(e.type, e);
 				}).bind('drawEnd', (e) => {
 					// console.log(drawLayer);
-					console.log(e ,e.getCenter);
+					// console.log(e.fillColor())
+					console.log(drawLayer);
+					console.log(e, 'end');
 				});
 				this.drawLayer = drawLayer;
 			},
@@ -211,6 +237,7 @@
 					//结束画图
 					this.drawLayer.remove();
 					this.drawLayer.endDraw();
+					// console.log(this.drawLayer);
 				}
 			},
 			//清除
@@ -227,7 +254,6 @@
 					//结束
 					this.drawLayer.endDraw();
 					this.drawArr = [];
-					// this.drawLayer.close();
 				}
 			}
 		}

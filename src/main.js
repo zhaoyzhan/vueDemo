@@ -8,6 +8,21 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 
+
+// 引入vue-amap
+import AMap from 'vue-amap';
+// var GAPI = require('GAPI');
+
+Vue.use(AMap);
+
+// 初始化vue-amap
+AMap.initAMapApiLoader({
+	// 申请的高德key
+	key: 'ffc273390f3acbe2d5737809319d4dbd',
+	// 插件集合
+	plugin: ['']
+});
+
 // import 'node_modules/geohey-javascript-sdk/dist/lib/g.css' // 样式
 // // import G from 'geohey-javascript-sdk'
 // import 'geohey-javascript-sdk/dist/lib/g-canvas.js' // canvas模块
