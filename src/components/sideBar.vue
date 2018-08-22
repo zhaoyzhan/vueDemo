@@ -8,6 +8,9 @@
 				<router-link to="/login">返回</router-link>
 			</li>
 		</ul>
+		<div>
+
+		</div>
 	</div>
 </template>
 
@@ -30,6 +33,9 @@
 			// console.log('wwww');
 		},
 		methods: {
+			// add(num) {
+			// 	console.log(num);
+			// }
 		}
 	}
 </script>

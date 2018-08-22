@@ -7,6 +7,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+// import Vuex from 'vuex'
+import store from './store/index'
+
 
 
 // 引入vue-amap
@@ -14,6 +17,7 @@ import AMap from 'vue-amap';
 // var GAPI = require('GAPI');
 
 Vue.use(AMap);
+// Vue.use(Vuex)
 
 // 初始化vue-amap
 AMap.initAMapApiLoader({
@@ -34,6 +38,7 @@ Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
 	el: '#app',
+	store,
 	router,
 	template: '<App/>',
 	components: {
